@@ -683,6 +683,7 @@ class Module:
     else:
       method = _get_unbound_fn(method)
     fn = lambda scope: method(self.clone(parent=scope), *args, **kwargs)
+    print("Variables:", variables)
     return apply(fn, mutable=mutable)(variables, rngs=rngs)
 
   def init_with_output(self, rngs: Union[PRNGKey, RNGSequences], *args,
